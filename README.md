@@ -12,7 +12,29 @@ Integrate [Deep Security Smart Check][] into your Jenkins container pipeline.
 
 ## Usage
 
-In your pipeline script:
+### Pre-registry scanning
+
+Deep Security Smart Check can scan your images before they are pushed to your
+production registry. If you have enabled pre-registry scanning on your Deep
+Security Smart Check instance, you can use the `preregistryScan` and
+`preregistryCredentialsId` parameters in the `smartcheckScan` method:
+
+```groovy
+smartcheckScan([
+    imageName: "registry.example.com/my-project/my-image",
+    smartcheckHost: "smartcheck.example.com",
+    smartcheckCredentialsId: "smartcheck-auth",
+    preregistryScan: true,
+    preregistryCredentialsId: "preregistry-auth",
+])
+```
+
+### Scanning images in your registry
+
+Deep Security Smart Check can also scan images that you have already pushed to your
+registry. In this example, the registry has credentials stored in the `example-registry-auth`
+Jenkins credential, and those credentials are passed in the `imagePullAuth`
+parameter to `smartcheckScan`:
 
 ```groovy
 withCredentials([
@@ -148,23 +170,6 @@ withCredentials([
       };
     }
     ```
-
-## Pre-registry scanning
-
-Deep Security Smart Check can scan your images before they are pushed to your
-production registry. If you have enabled pre-registry scanning on your Deep
-Security Smart Check instance, you can add the `preregistryScan` and
-`preregistryCredentialsId` parameters to the `smartcheckScan` method:
-
-```groovy
-smartcheckScan([
-    imageName: "registry.example.com/my-project/my-image",
-    smartcheckHost: "smartcheck.example.com",
-    smartcheckCredentialsId: "smartcheck-auth",
-    preregistryScan: true,
-    preregistryCredentialsId: "preregistry-auth",
-])
-```
 
 ## Development
 
