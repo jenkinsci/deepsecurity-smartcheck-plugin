@@ -1,14 +1,14 @@
 # Deep Security Smart Check plugin for Jenkins
 
-Provides Jenkins integration with [Deep Security Smart Check][]
+Integrate [Deep Security Smart Check][] into your Jenkins container pipeline.
 
 [deep security smart check]: https://www.trendmicro.com/smartcheck
 
 ## Installation
 
-1. In Jenkins, go to Manage Jenkins > Manage Plugins
-2. Select the "Available" tab
-3. Search for "Deep Security Smart Check"
+1. In Jenkins, go to **Manage Jenkins** > **Manage Plugins**
+2. Select the **Available** tab
+3. Search for `Deep Security Smart Check`
 
 ## Usage
 
@@ -66,10 +66,8 @@ withCredentials([
     See [creating a scan][] in the [Deep Security Smart Check API Reference][]
     for additional registry credentials options.
 
-[deep security smart check api reference]:
-  https://deep-security.github.io/smartcheck-docs/api/index.html
-[creating a scan]:
-  https://deep-security.github.io/smartcheck-docs/api/index.html#operation/createScan
+[deep security smart check api reference]: https://deep-security.github.io/smartcheck-docs/api/index.html
+[creating a scan]: https://deep-security.github.io/smartcheck-docs/api/index.html#operation/createScan
 
 - **insecureSkipRegistryTLSVerify**
   - If Deep Security Smart Check should ignore certificate errors from the image
