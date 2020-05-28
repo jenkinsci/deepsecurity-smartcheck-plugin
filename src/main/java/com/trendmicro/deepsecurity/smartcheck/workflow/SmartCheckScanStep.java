@@ -358,7 +358,8 @@ public class SmartCheckScanStep extends Step {
 				CredentialsProvider.track(run, smartcheckCredentials);
 
 				dockerCommandArgs.add("-e", usernameVar + "=" + smartcheckCredentials.getUsername());
-				dockerCommandArgs.add("-e", passwordVar + "=" + Secret.toString(smartcheckCredentials.getPassword()));
+				dockerCommandArgs.add("-e");
+				dockerCommandArgs.addMasked(passwordVar + "=" + Secret.toString(smartcheckCredentials.getPassword()));
 
 				return true;
 			}
@@ -377,7 +378,8 @@ public class SmartCheckScanStep extends Step {
 			}
 
 			if (defaultPassword != null) {
-				dockerCommandArgs.add("-e", passwordVar + "=" + defaultPassword);
+				dockerCommandArgs.add("-e");
+				dockerCommandArgs.addMasked(passwordVar + "=" + defaultPassword);
 			}
 
 			return true;
